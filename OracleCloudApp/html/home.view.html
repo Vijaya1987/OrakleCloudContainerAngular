@@ -1,0 +1,85 @@
+ <div class="oj-flex-item logo">
+      <img src= "./images/oracle_logo_lrg_2x.png" alt="Oracle">
+ </div> 
+ <div id="app-nav" data-bind=""><nav id="main-nav" class="oj-flex">
+  <div class="oj-flex-item icon">
+    <i class="icon icon-opc-storage icon-stack-1x icon-inverse"></i>
+  </div>
+  <h3 class="oj-flex-item title">Storage Classic</h3>  
+</nav>
+</div>
+ <section id="containers-list-top">
+    <div id="split-summary-topper" class="oj-flex">
+    <div class="oj-flex-item">
+      <h1 data-bind="text: StorageConsole.locale.containerList">Container List</h1>
+    </div>
+    <div class="oj-flex-item">      
+    </div>
+  </div>
+  <div id="split-summary">
+    <div class="cols">
+      <div>
+        <h2 data-bind="text: StorageConsole.locale.summary">Summary</h2>
+      </div>
+      <div>
+        <h3 data-bind="text: numberFormat(containers().containerCount())">13</h3>
+        <h5 data-bind="text: StorageConsole.locale.containerCount()">Containers</h5>
+      </div>
+      <div>
+        <h3 data-bind="text: numberFormat(StorageConsole.account().get('objectCount'))">135,970</h3>
+        <h5 data-bind="text: StorageConsole.locale.objectCount">Objects</h5>
+      </div>
+      <div>
+        <h3 data-bind="text: byteSize(StorageConsole.account().get('bytesUsed'))">115 GB</h3>
+        <h5 data-bind="text: StorageConsole.locale.accountStorageUsed">Storage Used</h5>
+      </div>
+    </div>
+  </div>
+ </section>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
+
+<div ng-controller="HomeController">
+
+
+<div class="form-group pull-right">
+		<input type="text" class="search form-control"
+			placeholder="What you looking for?">
+</div>
+<table data-toggle="table"   data-sort-name="name" data-sort-order="desc"> 
+<thead> 
+<tr>
+<th data-field="name" data-sortable="true">Container Name </th>  
+</tr>
+</thead>
+<tbody>
+   <tr ng-repeat="container in containers"> 
+        <td>
+        	<a ng-href="http://localhost:8080/getContainer?id={{container.containerId}}">{{container.containerName}}</a> 
+        </td>        
+  </tr>
+</tbody>
+</table>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js">
+</script>
+
+</div>
+<!--  <div ng-controller="HomeController">	
+  <table>
+    <tr>
+        <th>Container Name</th>
+    </tr>
+    <tr ng-repeat="container in containers">
+        <td>
+        	<a ng-href="http://localhost:8080/getContainer?id={{container.containerId}}">{{container.containerName}}</a>
+        </td>        
+    </tr>
+</table>
+  
+</div>-->
+
+
+	
+ 
